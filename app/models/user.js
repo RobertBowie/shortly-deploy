@@ -15,7 +15,7 @@ var userSchema = new Schema({
 var User = mongoose.model('user', userSchema);
 
 User.comparePassword = function(attemptedPassword, callback) {
-   bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
+   bcrypt.compare(attemptedPassword, this.findOne('password'), function(err, isMatch) { // this.get('password')
      callback(isMatch);
    });
 }
