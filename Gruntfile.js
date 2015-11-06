@@ -41,14 +41,21 @@ module.exports = function(grunt) {
     jshint: {
       files: ['*.js', '**/*.js', ],
       options: {
-        force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
+          'dist/*.js',
+          'dist/*.min.js',
           'public/lib/**/*.js',
           'public/dist/**/*.js',
           'node_modules/**/*.js'
         ]
+      },
+      globals: {
+        Backbone: true,
+        jQuery: true,
+        _: true
       }
+
     },
 
     cssmin: {
@@ -120,14 +127,13 @@ module.exports = function(grunt) {
     'jshint',
     'concat',
     'uglify',
-    'cssmin',
-    'nodemon',
-    'mochaTest'
+    'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
+
     } else {
       grunt.task.run([ 'server-dev' ]);
     }

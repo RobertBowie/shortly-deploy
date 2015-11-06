@@ -1,3 +1,1 @@
-Shortly.Link = Backbone.Model.extend({
-  urlRoot: '/links'
-});
+Shortly.Link = Backbone.Model.extend({ urlRoot: '/links' });
